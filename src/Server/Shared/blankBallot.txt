@@ -1,0 +1,7 @@
+US Ballot 2024
+President, 5, Donald J Trump, Kamala Harris, Barack Obama, Hilly Hill, Carlos Herrera 
+Vice-President, 5, JD Vance, Harry Evans, Will Wilson,  Jay Z,  CB D 
+State Senator, 5, Janis Quinlan, Katie Sieben, Gary Kreiesel, John Theinberge, Sarah Hietpas 
+Mayor, 5, Pat Synder, Bill Palmquist, Amy Burback, Kathy Buchhloz, George F. Dierberger 
+Council Member, 5, Micheal B, Steve Carlson, Toby  Hernandez, Bety Mccolum, Hilton H 
+
