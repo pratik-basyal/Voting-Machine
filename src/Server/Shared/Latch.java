@@ -22,7 +22,11 @@ public class Latch {
     }
     private void readInput() {
                 String idtype = socket.getInput().toLowerCase();
+<<<<<<< HEAD
 //                socket.clearInput();
+=======
+                socket.clearInput();
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
     }
     public void unlock() {
         if (!latchError) {

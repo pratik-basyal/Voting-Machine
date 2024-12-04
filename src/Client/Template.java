@@ -1,8 +1,11 @@
 package Client;
 
+<<<<<<< HEAD
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+=======
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
 import java.io.Serializable;
 import java.util.*;
 
@@ -105,6 +108,7 @@ public class Template implements Serializable {
         return buttons.get(index);
     }
 
+<<<<<<< HEAD
     public Template votingTemplate(Template votingTemplate, String[] headersList, String[] optionsList){
         votingTemplate.setConstraint(1);
         votingTemplate.setHeader(headersList[0]);
@@ -142,10 +146,50 @@ public class Template implements Serializable {
         votingTemplate.setHeader(headersList[4]);
         votingTemplate.setDescription("Please select an options");
         votingTemplate.setOptions(optionsList[0], optionsList[1], optionsList[2], optionsList[3], optionsList[4]);
+=======
+    public Template votingTemplate(Template votingTemplate){
+        votingTemplate.setConstraint(1);
+        votingTemplate.setHeader("President");
+        votingTemplate.setDescription("Please select an options");
+        votingTemplate.setOptions("Donald J Trump", "Kamala Harris", "Barack Obama", "Hilly Hill", "Carlos Herrera");
+        votingTemplate.setButtons("","","Next");
+        return votingTemplate;
+    }
+    public Template votingTemplateII(Template votingTemplate){
+        votingTemplate.setConstraint(1);
+        votingTemplate.setHeader("Vice-President");
+        votingTemplate.setDescription("Please select an options");
+        votingTemplate.setOptions("JD Vance", "Harry Potter", "Will Wilson", "Jay Z", "CB D");
+        votingTemplate.setButtons("Previous","","Next");
+        return votingTemplate;
+    }
+    public Template votingTemplateIII(Template votingTemplate){
+        votingTemplate.setConstraint(1);
+        votingTemplate.setHeader("State Senator");
+        votingTemplate.setDescription("Please select an options");
+        votingTemplate.setOptions("Janis Quinlan", "Katie Sieben", "Gary Kreiesel", "John Rheinberger", "Sarah Hietpas");
+        votingTemplate.setButtons("Previous","","Next");
+        return votingTemplate;
+    }
+    public Template votingTemplateIV(Template votingTemplate){
+        votingTemplate.setConstraint(1);
+        votingTemplate.setHeader("Mayor");
+        votingTemplate.setDescription("Please select an options");
+        votingTemplate.setOptions("Pat Synder", "Bill Palmquist", "Amy Burback", "Kathy Buchhloz", "George F. Dierberger");
+        votingTemplate.setButtons("Previous","","Next");
+        return votingTemplate;
+    }
+    public Template votingTemplateV(Template votingTemplate){
+        votingTemplate.setConstraint(1);
+        votingTemplate.setHeader("Council Member'");
+        votingTemplate.setDescription("Please select an options");
+        votingTemplate.setOptions("Micheal B", "Steve Carlson", "Toby Hernandez", "Betty Mccollum", "Hilton H");
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
         votingTemplate.setButtons("Previous","Submit","");
         return votingTemplate;
     }
 
+<<<<<<< HEAD
     public Template adminTemplate(Template adminTemplate){
         adminTemplate.setConstraint(1);
         adminTemplate.setHeader("Welcome to Admin Panel");
@@ -253,5 +297,15 @@ public class Template implements Serializable {
 
 
 
+=======
+    public Template adminTemplate(Template votingTemplate){
+        votingTemplate.setConstraint(1);
+        votingTemplate.setHeader("Welcome to Admin Panel");
+        votingTemplate.setDescription("Menu");
+        votingTemplate.setOptions("Machine Setup", "Open Voting", "Open Voting Session", "End Voting Session", "Close Voting");
+        votingTemplate.setButtons("","","");
+        return votingTemplate;
+    }
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
 
 }

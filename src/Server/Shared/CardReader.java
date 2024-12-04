@@ -1,6 +1,9 @@
 package Server.Shared;
 
+<<<<<<< HEAD
 import Server.VotingManager.AdminManager.AdminManager_Main;
+=======
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
 import Socket.Socket_Handler_Main;
 
 import java.util.Scanner;
@@ -11,7 +14,11 @@ public class CardReader {
 
 
     private boolean cardIn = false;
+<<<<<<< HEAD
     public static boolean fail = false;
+=======
+    private boolean fail = false;
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
     private String ID = null;
     private cardType type = null;
     private InputHandler socket = InputHandler.getInstance();
@@ -55,16 +62,20 @@ public class CardReader {
     }
 
     public boolean checkFail(){
+<<<<<<< HEAD
         String idtype = socket.getInput().toLowerCase();
         if (idtype.equalsIgnoreCase("crfail")) {
             setFail();
         }
+=======
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
         return fail;
     }
 
 
     public void readInput() {
             String idtype = socket.getInput().toLowerCase();
+<<<<<<< HEAD
         System.out.println("Card Reader is listening: " + idtype);
             if(idtype.startsWith("cr")) {
                 switch (idtype.substring(2)) {
@@ -87,6 +98,32 @@ public class CardReader {
 
                 }socket.clearInput();
             }
+=======
+            System.out.println("Received command: " + idtype); // Log received commands
+            switch (idtype) {
+                case "id":
+                    //socket.sendToClient("Current Card ID: " + (ID != null ? ID : "No Card Inserted"));
+                    break;
+                case "reader:a":
+                    readCard("a");
+
+                    break;
+                case "reader:v":
+                    readCard("v");
+                    break;
+                case "type":
+                    //socket.sendToClient("Card Type: " + (type != null ? type : "No Card Inserted"));
+                    break;
+                case "eject":
+                    eraseEjectCard();
+                    break;
+                case "read_fail":
+                    setFail();
+                    break;
+                default:
+            }
+            socket.clearInput();
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
     }
     private String readCard(String idtype){
         if(!fail) {
@@ -118,6 +155,10 @@ public class CardReader {
     private void setFail(){
         eraseEjectCard();
         fail = true;
+<<<<<<< HEAD
+=======
+
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
     }
     private void generateID(){
         String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -129,11 +170,14 @@ public class CardReader {
             sb.append(AlphaNumericString.charAt(index));
         }
         ID = sb.toString();
+<<<<<<< HEAD
         sendMessage("ID:"+ID);
     }
 
     public void sendMessage(String message){
         socket.sendToClient(message);
+=======
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
     }
 
 

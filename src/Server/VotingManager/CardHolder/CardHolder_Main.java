@@ -11,6 +11,7 @@ public class CardHolder_Main {
         return CardReader.cardType.VOTER;
     }
 
+<<<<<<< HEAD
     public void runInput() throws InterruptedException {
         cardReader.readInput();
     }
@@ -20,6 +21,12 @@ public class CardHolder_Main {
     public void ejectCard(){
         cardReader.eraseEjectCard();
     }
+=======
+    public void runInput(){
+        cardReader.readInput();
+    }
+
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
     /********
      *
      * @return

@@ -6,6 +6,7 @@ import Socket.InputHandler;
 
 public class Printer {
     private InputHandler handler = InputHandler.getInstance();
+<<<<<<< HEAD
 
     private boolean isPrinted = false;
     private int count = 1;
@@ -13,6 +14,22 @@ public class Printer {
     public static boolean printerError;
     public Printer(){
         printerError = false;
+=======
+    private BufferedWriter writer2;
+
+
+    private int count = 1;
+
+    boolean printerError;
+    public Printer(){
+        printerError = false;
+        readInput();
+    }
+    public void print(String s) {
+        if(!printerError){
+            System.out.println(s);
+        }
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
     }
     public String advance(){
         if(!printerError){
@@ -20,6 +37,7 @@ public class Printer {
         }
         return "";
     }
+<<<<<<< HEAD
     public  synchronized boolean checkFail(){
         String input = handler.getInput().toLowerCase();
 //        System.out.println("PRINTER IS LISTENING");
@@ -27,6 +45,9 @@ public class Printer {
             System.out.println("Checking Printer input");
             setFail();
         }
+=======
+    public boolean checkFail(){
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
         return printerError;
     }
 
@@ -34,6 +55,7 @@ public class Printer {
         printerError = true;
     }
 
+<<<<<<< HEAD
     public void printInput() throws InterruptedException {
         System.out.println("Printer is listening");
         String input = handler.getInput().toLowerCase();
@@ -51,5 +73,16 @@ public class Printer {
     public boolean printedConfirmed() {
         return isPrinted;
     }
+=======
+    private void readInput() {
+                String idtype = handler.getInput().toLowerCase();
+                switch (idtype) {
+                    case "print_fail":
+                        setFail();
+                        break;
+                }
+                handler.clearInput();
+            }
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
 
 }

@@ -11,8 +11,11 @@ public class Blank_Ballot {
     public Blank_Ballot() throws IOException {
         this.sdCardReader = new SD_Card_R();
         this.blankBallotContents = null;
+<<<<<<< HEAD
         fetchBlankBallot();
         sdCardReader.sendBallot();
+=======
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
     }
 
     // Retrieves the blank ballot from the SD card

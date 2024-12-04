@@ -1,5 +1,6 @@
 package Socket;
 
+<<<<<<< HEAD
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -13,21 +14,49 @@ public class InputHandler {
     private String inputty = ""; // Current message being processed
     private final Object lock = new Object(); // Lock for synchronization
     private ServerSocket serverSocket;
+=======
+import javafx.application.Platform;
+
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+public class InputHandler {
+    private static InputHandler instance;
+    private AtomicBoolean status = new AtomicBoolean(false);
+    private String inputty = "";
+    int port = 1234;
+    private ServerSocket serverSocket;
+
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
     private ObjectOutputStream clientOut;
 
     private InputHandler() {
         try {
+<<<<<<< HEAD
             serverSocket = new ServerSocket(1234);
             System.out.println("Server is listening on port 1234");
 
             // Start a thread for terminal input
             new Thread(this::listenToTerminal).start();
         } catch (IOException e) {
+=======
+            serverSocket = new ServerSocket(port);
+            System.out.println("Server is listening on port " + port);
+        } catch (IOException e) {
+            System.err.println("Failed to open server on port " + port);
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
             e.printStackTrace();
         }
     }
 
+<<<<<<< HEAD
     // Singleton pattern to ensure a single instance
+=======
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
     public static synchronized InputHandler getInstance() {
         if (instance == null) {
             instance = new InputHandler();
@@ -36,26 +65,53 @@ public class InputHandler {
         return instance;
     }
 
+<<<<<<< HEAD
     // Start listening for client connections
+=======
+    public synchronized String getInput() {
+        return inputty;
+    }
+
+    public synchronized void clearInput() {
+        inputty = "";
+    }
+
+    public synchronized boolean getStatus() {
+        return status.get();
+    }
+
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
     public void start() {
         try {
             while (true) {
                 Socket socket = serverSocket.accept();
                 System.out.println("Client connected");
+<<<<<<< HEAD
                 new Thread(() -> handleClient(socket)).start();
             }
         } catch (IOException e) {
+=======
+
+                new Thread(() -> handleClient(socket)).start();
+            }
+        } catch (IOException e) {
+            System.err.println("Error while accepting client connection");
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
             e.printStackTrace();
         }
     }
 
+<<<<<<< HEAD
     // Handle a connected client
+=======
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
     private void handleClient(Socket socket) {
         try (
                 ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
                 ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream())
         ) {
             this.clientOut = out;
+<<<<<<< HEAD
             Object message;
 
             while ((message = in.readObject()) != null) {
@@ -66,10 +122,29 @@ public class InputHandler {
                 }
             }
         } catch (IOException | ClassNotFoundException e) {
+=======
+
+            Object message;
+
+            while ((message = in.readObject()) != null) {
+                if(message  instanceof String){
+
+                    String msg = (String) message;
+                    inputty = msg;
+
+                } else {
+                    inputty = "template_done";
+                }
+            }
+
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Error handling client communication");
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
             e.printStackTrace();
         }
     }
 
+<<<<<<< HEAD
     // Process a message from the client
     private void processMessage(String message) {
         synchronized (lock) {
@@ -117,12 +192,18 @@ public class InputHandler {
 
     // Send a message to the client
     public synchronized void sendToClient(Object message) {
+=======
+
+    public synchronized void sendToClient(Object message) {
+
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
         if (clientOut != null) {
             try {
                 clientOut.writeObject(message);
                 clientOut.flush();
                 System.out.println("Sent to client: " + message);
             } catch (IOException e) {
+<<<<<<< HEAD
                 e.printStackTrace();
             }
         }
@@ -169,3 +250,12 @@ public class InputHandler {
         }
     }
     }
+=======
+                System.err.println("Error sending object to client");
+                e.printStackTrace();
+            }
+        }
+
+    }
+}
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34

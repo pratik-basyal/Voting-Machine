@@ -1,6 +1,9 @@
 package Client;
 
+<<<<<<< HEAD
 import javafx.animation.PauseTransition;
+=======
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -12,9 +15,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+<<<<<<< HEAD
 import javafx.util.Duration;
 
 import javax.swing.plaf.synth.SynthTextAreaUI;
+=======
+
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
 import java.io.*;
 import java.net.Socket;
 import java.util.*;
@@ -23,25 +30,38 @@ public class simulation extends Application {
 
     // Assuming you have a list to store selected options
     List<String> selectedOptions = new ArrayList<>(Arrays.asList("Option 1", "Option 2", "Option 3", "Option4", "Option 5"));
+<<<<<<< HEAD
     List<String> selectedSettings = new ArrayList<>(Arrays.asList("Setting 1", "Setting 2", "Setting 3", "Setting 4"));
     private Socket socket;
     private Template templateSample = new Template();
     private Template template2;
+=======
+    private Socket socket;
+    private Template template2;
+    private int counter;
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
     private ObjectOutputStream out;
     private ObjectInputStream in;
     private Stage primaryStage;
 
+<<<<<<< HEAD
     private boolean isVoter = false;
     private boolean isAdmin = false;
     private boolean confirmed = false;
     private boolean enableVotingFirst = false;
     private boolean openVoting = false;
     private boolean closeVoting = false;
+=======
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
 
     private boolean ScreenStatus = false;
     private BorderPane screen = new BorderPane();
     private VBox stuff = new VBox();
+<<<<<<< HEAD
     private String ID;
+=======
+
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
 
     public void ScreenOn(){
         ScreenStatus = true;
@@ -49,8 +69,11 @@ public class simulation extends Application {
     public int constraint;
     public int count = 0;
     public int color = 0;
+<<<<<<< HEAD
     String[] headersList; // Array to store headers
     String[][] optionsList; // 2D array to store options
+=======
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
 
     public String background = "#0c605d";
     public String select = "#0c605d";
@@ -112,7 +135,11 @@ public class simulation extends Application {
         readerField.setOnAction(e -> {
             String cardData = readerField.getText();
             if (!cardData.isEmpty()) {
+<<<<<<< HEAD
                 sendObjectToServer("CRreader:" + cardData); // Send card data to the server
+=======
+                sendObjectToServer("reader:" + cardData); // Send card data to the server
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
                 readerField.clear(); // Clear the field after sending
             }
         });
@@ -146,7 +173,11 @@ public class simulation extends Application {
     }
     public void showTemplate(Template template){
         root.setCenter(screen);
+<<<<<<< HEAD
 //        clear();
+=======
+        clear();
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
         if(color==0){
             background = blueBack;
             select = blueSelect;
@@ -217,6 +248,7 @@ public class simulation extends Application {
                 }
                 int finalI = i;
                 option.setOnMouseClicked(event -> {
+<<<<<<< HEAD
                         int county = 0;
                         for (int j = 0; j < 5; j++) {
                             if ((boolean) template.getOptions(j).getSecond() == true) {
@@ -236,16 +268,40 @@ public class simulation extends Application {
                 stuff.getChildren().add(option);
             }
 
+=======
+                    int county = 0;
+                    for(int j = 0;j < 5; j++){
+                        if((boolean) template.getOptions(j).getSecond() ==true){
+                            county++;
+                        }
+                    }
+                    boolean checks = (boolean) template.getOptions(finalI).getSecond();
+                    if(checks){
+                        template.getOptions(finalI).setSecond(false);
+                        option.setStyle(" -fx-background-color: " + background +"; -fx-background-radius: 20;");
+                    } else if (county < constraint){
+                        template.getOptions(finalI).setSecond(true);
+                        option.setStyle(" -fx-background-color: " + select +"; -fx-background-radius: 20;");
+
+                    }
+                });
+                stuff.getChildren().add(option);
+            }
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
         }
 
 
         HBox buttonField = new HBox();
         buttonField.setStyle("-fx-background-color:  #1d457c#1f477e#20477e#21477e#22477e#23477e#0f0d41"+ background);
+<<<<<<< HEAD
         if(confirmed){
             System.out.println("Checking confirmed");
             buttonField.setStyle("-fx-background-color: #0c605d;");
             confirmed=false;
         }
+=======
+
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
         buttonField.setPrefHeight(100);
         buttonField.setAlignment(Pos.CENTER);
         buttonField.setSpacing(70);
@@ -270,6 +326,7 @@ public class simulation extends Application {
                             }
                         }
                         count++;
+<<<<<<< HEAD
                         if (count == 1) {
                             clear();
                             template.votingTemplateII(template, headersList, optionsList[1]);
@@ -301,10 +358,41 @@ public class simulation extends Application {
                             templateSample = new Template();
                             templateSample.votingTemplateV(templateSample, headersList, optionsList[4]);
                             prevTemplate(templateSample);
+=======
+                        System.out.println(count);
+                        if (count == 1) {
+                            template.votingTemplateII(template);
+                            sendObjectToServer(template);
+                            template2 = new Template(); // Create or get another template instance
+                            template2.votingTemplateII(template2);
+                            prevTemplate(template2);
+                        }
+                        else if (count == 2) {
+                            template.votingTemplateIII(template);
+                            sendObjectToServer(template);
+                            template2 = new Template(); // Create or get another template instance
+                            template2.votingTemplateIII(template2);
+                            prevTemplate(template2);
+                        }
+                        else if (count == 3) {
+                            template.votingTemplateIV(template);
+                            sendObjectToServer(template);
+                            template2 = new Template(); // Create or get another template instance
+                            template2.votingTemplateIV(template2);
+                            prevTemplate(template2);
+                        }
+                        else if (count == 4) {
+                            template.votingTemplateV(template);
+                            sendObjectToServer(template);
+                            template2 = new Template(); // Create or get another template instance
+                            template2.votingTemplateV(template2);
+                            prevTemplate(template2);
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
                         }
 
                     }
                     if(finalI==1){
+<<<<<<< HEAD
                         if(isVoter) {
                             for (int j = 0; j < 5; j++) {
                                 if ((Boolean) template.getOptions(j).getSecond()) {
@@ -468,6 +556,30 @@ public class simulation extends Application {
                                 pause.play();
                             });
                         }
+=======
+                        for (int j = 0; j < 5; j++) {
+                            if ((Boolean) template.getOptions(j).getSecond()) {
+                                selectedOptions.set(count,template.getOptions(j).getFirst().toString());
+                                break;
+                            }
+                        }
+                        sendObjectToServer(selectedOptions);
+                        Platform.runLater(() -> {
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Confirmation");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Thanks for Voting!");
+                            alert.showAndWait();
+                            count = 0;
+                            // Set the background for the main container (e.g., VBox or BorderPane)
+                            stuff.setStyle("-fx-background-color: #0c605d;");
+                            screen.setStyle("-fx-background-color: #0c605d;");
+                            buttonField.setStyle("-fx-background-color:#0c605d");
+                            clear();
+                            selectedOptions = new ArrayList<>(Arrays.asList("Option 1", "Option 2", "Option 3", "Option4", "Option 5"));
+                            mainUI();
+                        });
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
 
                     }
                     if (finalI == 0) {
@@ -475,6 +587,7 @@ public class simulation extends Application {
                         System.out.println(selectedOptions);
 
                         if (count == 0) {
+<<<<<<< HEAD
                             clear();
                             template.votingTemplate(template, headersList, optionsList[0]);
                             sendObjectToServer(template);
@@ -505,6 +618,34 @@ public class simulation extends Application {
                             templateSample = new Template();
                             templateSample.votingTemplateIV(templateSample, headersList, optionsList[3]);
                             prevTemplate(templateSample);
+=======
+                            template.votingTemplate(template);
+                            sendObjectToServer(template);
+                            template2 = new Template(); // Create or get another template instance
+                            template2.votingTemplate(template2);
+                            prevTemplate(template2);
+                        }
+                        else if (count == 1) {
+                            template.votingTemplateII(template);
+                            sendObjectToServer(template);
+                            template2 = new Template(); // Create or get another template instance
+                            template2.votingTemplateII(template2);
+                            prevTemplate(template2);
+                        }
+                        else if (count == 2) {
+                            template.votingTemplateIII(template);
+                            sendObjectToServer(template);
+                            template2 = new Template(); // Create or get another template instance
+                            template2.votingTemplateIII(template2);
+                            prevTemplate(template2);
+                        }
+                        else if (count == 3) {
+                            template.votingTemplateIV(template);
+                            sendObjectToServer(template);
+                            template2 = new Template(); // Create or get another template instance
+                            template2.votingTemplateIV(template2);
+                            prevTemplate(template2);
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
 
                         }
                     }
@@ -532,6 +673,7 @@ public class simulation extends Application {
         }
         showTemplate(template2);  // Display the new template
     }
+<<<<<<< HEAD
     public void BB(String stringBB) throws IOException {
         String[] lines = stringBB.split("\\r?\\n");
         headersList = new String[lines.length]; // Array to store headers
@@ -555,6 +697,8 @@ public class simulation extends Application {
             System.out.println(Arrays.toString(optionSet));
         }
     }
+=======
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
     private void clear(){
         stuff.getChildren().clear();
         if (screen.getTop() instanceof Pane) {
@@ -601,13 +745,18 @@ public class simulation extends Application {
             Object message;
             while ((message = in.readObject()) != null) {
                 if (message instanceof String msg) {
+<<<<<<< HEAD
                     String[] result = msg.split(":", 2);
                     switch (result[0].toLowerCase()) {
+=======
+                    switch (msg.split(":")[0].toLowerCase()) {
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
                         case "reader" -> {
                             String[] parts = msg.split(":");
 
                         }
                         case "ejected" -> {
+<<<<<<< HEAD
                             System.out.println("Checking ejected");
                             Platform.runLater(() -> {
                                 clear();
@@ -726,6 +875,17 @@ public class simulation extends Application {
 
                         }
 
+=======
+
+                        }
+                        case "printer" -> {
+                            /*================================================
+                            /TODO: However you want to react to the printers message goes here
+                             ================================================*/
+
+                        }
+                        default -> System.out.println("Unhandled message: " + msg);
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
                     }
                 } else if (message instanceof Template template) {
                     Platform.runLater(() -> showTemplate(template));
@@ -733,8 +893,11 @@ public class simulation extends Application {
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
+<<<<<<< HEAD
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
+=======
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
         }
     }
 

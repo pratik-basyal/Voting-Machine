@@ -4,6 +4,7 @@ public class ScreenDriver {
 
     private InputHandler socket = InputHandler.getInstance();
 
+<<<<<<< HEAD
     private String message="";
 
     public static boolean screenFailed;
@@ -17,6 +18,20 @@ public class ScreenDriver {
             message = socket.getInput().toLowerCase().substring(3);
             socket.clearInput();
         }
+=======
+    private String message = null;
+
+    private boolean screenFailed;
+
+    public ScreenDriver() {
+        readInput();
+        screenFailed = false;
+    }
+
+    private void readInput() {
+        String message = socket.getInput().toLowerCase();
+        socket.clearInput();
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
 
     }
 
@@ -25,6 +40,7 @@ public class ScreenDriver {
      * @return
      */
     public String getMessage() {
+<<<<<<< HEAD
         readInput();
         return message;
     }
@@ -40,6 +56,13 @@ public class ScreenDriver {
             screenFailed = true;
         }
         return screenFailed;
+=======
+        return this.message;
+    }
+
+    public void sendMessage(Object message) {
+        socket.sendToClient((String) message);
+>>>>>>> c5eb49cdbebf3b97603439cba225034757d86d34
     }
 
 
