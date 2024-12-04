@@ -1,7 +1,7 @@
 package Server.Shared;
 
 public class SD_Card_W2 {
-    private boolean sdCardFailed;
+    public static boolean sdCardFailed;
 
     public SD_Card_W2() {
         this.sdCardFailed = false;

@@ -1,0 +1,40 @@
+Voter_ID: 3jMUDIYUrX
+President = Donald J Trump
+Mayor = Bill Palmquist
+State Senator = Katie Sieben
+Council Member = Micheal B
+Vice-President = Harry Evans
+
+======================
+Voter_ID: unuHcEMMIy
+President = Kamala Harris
+Mayor = Bill Palmquist
+State Senator = Katie Sieben
+Council Member = Steve Carlson
+Vice-President = Harry Evans
+
+======================
+Voter_ID: KjsGrGzb8f
+President = Donald J Trump
+Mayor = Kathy Buchhloz
+State Senator = Katie Sieben
+Council Member = Toby  Hernandez
+Vice-President = Will Wilson
+
+======================
+Voter_ID: QQkSie4hdd
+President = Barack Obama
+Mayor = Amy Burback
+State Senator = Katie Sieben
+Council Member = Toby  Hernandez
+Vice-President = Will Wilson
+
+======================
+Voter_ID: jmFGQFcJQS
+President = Kamala Harris
+Mayor = Bill Palmquist
+State Senator = Katie Sieben
+Council Member = Toby  Hernandez
+Vice-President = JD Vance
+
+======================
